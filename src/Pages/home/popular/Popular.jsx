@@ -8,7 +8,7 @@ import Carousel from '../../../components/carousel/Carousel';
 import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
 const Popular = () => {
     const [endpoint, setEndPoint] = useState("movie");
-    const {data, loading} = useFetch(`/${endpoint}/popular/`);
+    const {data, loading} = useFetch(`/${endpoint}/popular`);
     const onTabChange = (tab)=>{
         setEndPoint(tab==="Movies" ? "movie" : "tv");
     };
