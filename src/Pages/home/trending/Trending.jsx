@@ -11,8 +11,10 @@ import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
 const Trending = () => {
     const [endpoint, setEndPoint] = useState("day");
     const {data, loading} = useFetch(`/trending/movie/${endpoint}`);
+
     const onTabChange = (tab)=>{
-        setEndPoint(tab==="Day" ? "day" : "week");
+        setEndPoint(tab === "Day" ? "day" : "week");
+
     }; 
   return (
     <div className='carouselSection'>

@@ -5,8 +5,7 @@ import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
 import { useNavigate, useLocation } from "react-router-dom";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import logo from "../../assets/logo.png"
-// import Control from "react-select/dist/declarations/src/components/Control";
+import logo from "../../assets/logo.webp"
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -76,6 +75,23 @@ const Header = () => {
                   <img src={logo} alt="" />
               </div>
               <ul className="menuItems">
+              <li className="menuItem">
+                      {/* <HiOutlineSearch onClick={openSearch} /> */}
+
+              <div>
+              <input
+            className="search-box padding-all-8"
+            type="text"
+            placeholder="Search"
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyUp={searchQueryHandler}
+          />
+           <span className="material-icons-outlined search-icon absolute">
+            search
+            </span>
+          </div>
+                  </li>
+
                   <li
                       className="menuItem"
                       onClick={() => navigationHandler("movie")}
@@ -88,9 +104,7 @@ const Header = () => {
                   >
                       TV Shows
                   </li>
-                  <li className="menuItem">
-                      <HiOutlineSearch onClick={openSearch} />
-                  </li>
+             
               </ul>
 
               <div className="mobileMenuItems">
