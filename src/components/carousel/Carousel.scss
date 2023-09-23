@@ -19,7 +19,6 @@
         cursor: pointer;
         opacity: 0.5;
         z-index: 1;
-        display: none;
         @include md {
             display: block;
         }
@@ -31,18 +30,19 @@
         left: 30px;
     }
     .carouselRighttNav {
-        right: 30px;
+        position: absolute;
+        right: 30px; /* Adjusted right position */
     }
     .loadingSkeleton {
         display: flex;
         gap: 10px;
-        overflow-y: hidden;
+        overflow-x: scroll; /* Changed from overflow-y to overflow-x */
         margin-right: -20px;
         margin-left: -20px;
         padding: 0 20px;
         @include md {
             gap: 20px;
-            overflow: hidden;
+            /* Remove overflow property */
             margin: 0;
             padding: 0;
         }
@@ -79,81 +79,94 @@
     .carouselItems {
         display: flex;
         gap: 10px;
-        overflow-y: hidden;
+        /* Remove overflow-y property */
         margin-right: -20px;
         margin-left: -20px;
         padding: 0 20px;
         @include md {
             gap: 20px;
-            overflow: hidden;
+            /* Remove overflow property */
             margin: 0;
             padding: 0;
         }
-        .carouselItem {
-            width: 125px;
-            cursor: pointer;
-            @include md {
-                width: calc(25% - 15px);
-            }
-            @include lg {
-                width: calc(20% - 16px);
-            }
-            flex-shrink: 0;
-            .posterBlock {
-                position: relative;
-                width: 90%;
-                aspect-ratio: 1 / 1.5;
-                background-size: cover;
-                background-position: center;
-                margin-bottom: 30px;
-                border-radius: 1%; 
-                display: flex;
-                align-items: flex-end;
-                justify-content: space-between;
-                padding: 10px;
-                .lazy-load-image-background {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+        /* Create horizontal layout */
+        flex-direction: row;
+        flex-wrap: nowrap;
+        /* Add a scrollbar for horizontal scrolling */
+        overflow-x: auto;
+        /* Hide scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+        }
+    }
+    .carouselItem {
+        width: 125px; /* Adjust the width as needed */
+        cursor: pointer;
+        flex-shrink: 0;
+        /* Adjust margins as needed */
+        margin-right: 10px;
+        @include md {
+            width: calc(25% - 15px);
+        }
+        @include lg {
+            width: calc(20% - 16px);
+        }
+        .posterBlock {
+            position: relative;
+            width: 90%;
+            aspect-ratio: 1 / 1.5;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 30px;
+            border-radius: 1%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 10px;
+            .lazy-load-image-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                img {
                     width: 100%;
                     height: 100%;
-                    
-                    overflow: hidden;
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
-                }
-           
-                .genres {
-                    // display: none;
-                    position: relative;
-                    @include md {
-                        display: flex;
-                        flex-flow: wrap;
-                        justify-content: flex-end;
-                    }
+                    object-fit: cover;
+                    object-position: center;
                 }
             }
-            .textBlock {
-                color: white;
-                display: flex;
-                flex-direction: column;
-                .title {
-                    font-size: 16px;
-                    margin-bottom: 10px;
-                    line-height: 24px;
-                    @include ellipsis(1);
-                    @include md {
-                        font-size: 20px;
-                    }
+            .genres {
+                position: relative;
+                @include md {
+                    display: flex;
+                    flex-flow: wrap;
+                    justify-content: flex-end;
                 }
-                .date {
-                    font-size: 14px;
-                    opacity: 0.5;
+            }
+        }
+        .textBlock {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-size: 16px;
+                margin-bottom: 10px;
+                line-height: 24px;
+                @include ellipsis(1);
+                @include md {
+                    font-size: 20px;
                 }
+            }
+            .date {
+                font-size: 14px;
+                opacity: 0.5;
             }
         }
     }
