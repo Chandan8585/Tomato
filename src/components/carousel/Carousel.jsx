@@ -1,8 +1,5 @@
 import React, { useRef } from 'react'
-import {
-    BsFillArrowLeftCircleFill,
-    BsFillArrowRightCircleFill,
-} from "react-icons/bs";
+
 import PosterFallback from "../../assets/no-poster.png";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,15 +7,16 @@ import ContentWrapper from '../contentWrapper/ContentWrapper.jsx';
 import Img from '../lazyLoadImage/Img';
 import dayjs from 'dayjs';
 import "./Carousel.scss"
-import CircleRating from '../circleRating/CircleRating';
+// import CircleRating from '../circleRating/CircleRating';
 import Genres from '../genres/Genres';
 
 
-const Carousel = ({data, loading , endPoint, title}) => {
+const Carousel = ({data, loading , endPoint, mediaType ,title}) => {
     const carouselContainer = useRef();
    const {url} = useSelector((state)=> state.home);
    const navigate = useNavigate();
 
+<<<<<<< HEAD
    const navigation = (dir)=> {
       const container = carouselContainer.current;
 
@@ -32,6 +30,9 @@ const Carousel = ({data, loading , endPoint, title}) => {
         behavior : "smooth"
        })
    };
+=======
+ 
+>>>>>>> 509f89b3751cc014d4e1e2d19d09e4c6792afceb
    const skItem = ()=>{
     return(
       <div className="skeletonItem">
@@ -47,17 +48,10 @@ const Carousel = ({data, loading , endPoint, title}) => {
     <div className="carousel">
         <ContentWrapper>
           {title && <div className="carouselTitle">{title}</div> }
-       <BsFillArrowLeftCircleFill
-        className = "CarouselLeftNav arrow"
-        onClick = {() => navigation("left")}
-        />
-           <BsFillArrowRightCircleFill
-        className = "CarouselRightNav arrow"
-        onClick = {() => navigation("right")}
-        />
+ 
         {!loading ?(
           <div className="carouselItems"
-          onClick={()=> navigate(`/${data[0]?.media_type || endPoint}/${data[0]?.id}`)}
+          onClick={()=> navigate(`/${data[0]?.media_type || endPoint || mediaType}/${data[0]?.id}`)}
 
   
 

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes ,Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import { fetchDataFromApi } from './utils/api';
-import HomeSlice, { getApiConfiguration, getGenres } from './Store/homeSlice';
+import  { getApiConfiguration, getGenres } from './Store/homeSlice';
 import Home from './Pages/home/Home';
 import Details from './Pages/details/Details';
 import SearchResult from './Pages/searchResult/SearchResult';
@@ -17,6 +17,7 @@ function App() {
   const {url} = useSelector((state)=>   state.home);
 
 
+<<<<<<< HEAD
   console.log(url);
   const fetchApiConfig = ()=> {
     fetchDataFromApi("/configuration").then((res)=> {
@@ -33,14 +34,37 @@ function App() {
       dispatch(getApiConfiguration(url));
     });
    };
+=======
+  // console.log(url);
+
+>>>>>>> 509f89b3751cc014d4e1e2d19d09e4c6792afceb
  useEffect(()=>{
    
   
      fetchApiConfig();
+<<<<<<< HEAD
  },);
+=======
+
+ });
+>>>>>>> 509f89b3751cc014d4e1e2d19d09e4c6792afceb
 
  
+ const fetchApiConfig = ()=> {
+  fetchDataFromApi("/configuration").then((res)=> {
+    // console.log(res);
 
+    const url = {
+      backdrop: res.images.secure_base_url + 
+      "original",
+      poster: res.images.secure_base_url + 
+      "original",
+      profile: res.images.secure_base_url +
+      "original",
+    }
+    dispatch(getApiConfiguration(url));
+  });
+ };
   const genresCall = async ()=>{
     let promises = []
     let endPoints = ["tv", "movie"]

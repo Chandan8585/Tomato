@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import "../Home.scss";
-// import "./HeroBanner.scss";
 
 import useFetch from '../../hooks/useFetch';
 import Carousel from '../../../components/carousel/Carousel';
@@ -9,13 +8,10 @@ import SwitchTabs from '../../../components/switchTabs/SwitchTabs';
 
 const TopRated = ({}) => {
     const [endpoint, setEndPoint] = useState("movie");
-   
-     
-     console.log("endpoint",endpoint);
-    const {data, loading} = useFetch(`/${mediaType}/${id}/top_rated`);        
+    
+    const {data, loading} = useFetch(`/${endpoint}/top_rated`);        
     const onTabChange = (tab)=>{
         setEndPoint(tab==="Movies" ? "movie" : "tv");
-
     };
   return (
     <div className='carouselSection'>

@@ -215,11 +215,11 @@ const DetailsBanner = ({ video, crew }) => {
                                         <Genres data={_genres} />
 
                                         <div className="row">
-                                            <CircleRating
+                                            {/* <CircleRating
                                                 rating={data.vote_average.toFixed(
                                                     1
                                                 )}
-                                            />
+                                            /> */}
                                             <div
                                                 className="playbtn"
                                                 onClick={() => {
