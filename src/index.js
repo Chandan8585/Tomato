@@ -1,18 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom'; // Import createRoot from react-dom
 import './index.css';
 import App from './App';
-
+import reportWebVitals from './reportWebVitals';
+import { sendToVercelAnalytics } from './vitals';
 import { Store } from './Store/Store.js';
 import { Provider } from 'react-redux';
 
-const root = document.getElementById('root');
-const reactRoot = ReactDOM.createRoot(root);
+// Use createRoot to render your app
+const root = createRoot(document.getElementById('root'));
 
-reactRoot.render(
+root.render(
   <React.StrictMode>
     <Provider store={Store}>
       <App />
     </Provider>
   </React.StrictMode>
 );
+
+reportWebVitals(sendToVercelAnalytics);

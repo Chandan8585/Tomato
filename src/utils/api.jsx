@@ -15,8 +15,8 @@ const headers = {
 export const fetchDataFromApi = async(url, params) => {
   try{
     const {data} = await axios.get(BASE_URL + url,{
-     headers: headers,
-      params: params,
+     headers,
+      params,
     }) 
       return data;
     } catch (err){
