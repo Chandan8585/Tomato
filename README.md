@@ -11,7 +11,7 @@ _Live Example: https://create-react-template.vercel.app/_
 
 ## Available Scripts
 
-In the project directory, you can run:
+
 
 ### `npm start`
 
